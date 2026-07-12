@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zero To Million — The Rebuild Session</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --charcoal: #17181b;
+    --charcoal-deep: #0c0d0f;
+    --blue: #0058fd;
+    --blue-soft: rgba(0,88,253,0.14);
+    --paper: #f3f3ef;
+    --paper-dim: #9a9a95;
+    --line: rgba(243,243,239,0.12);
+    --red-loss: #ff4d4d;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--charcoal);
+    color:var(--paper);
+    font-family:'Montserrat', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  .mono{ font-family:'JetBrains Mono', monospace; }
+
+  a{ color:inherit; text-decoration:none; }
+
+  ::selection{ background:var(--blue); color:#fff; }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 6vw;
+    background:linear-gradient(180deg, rgba(12,13,15,0.9), rgba(12,13,15,0));
+    backdrop-filter:blur(2px);
+  }
+  .nav-logo{
+    font-weight:800; font-size:15px; letter-spacing:0.12em; text-transform:uppercase;
+  }
+  .nav-logo span{ color:var(--blue); }
+  .nav-cta{
+    font-family:'JetBrains Mono', monospace; font-size:12px; font-weight:500;
+    letter-spacing:0.04em; text-transform:uppercase;
+    background:var(--blue); color:#fff; padding:11px 20px; border-radius:2px;
+    transition:transform .25s ease, box-shadow .25s ease;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{ transform:translateY(-2px); box-shadow:0 8px 24px var(--blue-soft); }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex; flex-direction:column; justify-content:center;
+    padding:140px 6vw 100px;
+    overflow:hidden;
+  }
+  .hero-eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px; letter-spacing:0.18em; text-transform:uppercase;
+    color:var(--blue); margin-bottom:26px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .hero-eyebrow::before{
+    content:''; width:26px; height:1px; background:var(--blue);
+  }
+  .hero h1{
+    font-size:clamp(2.1rem, 5.6vw, 4.6rem);
+    font-weight:800;
+    letter-spacing:-0.02em;
+    line-height:1.08;
+    max-width:16.5ch;
+  }
+  .hero h1 em{
+    font-style:italic; font-weight:600; color:var(--paper-dim);
+  }
+  .hero h1 .rebuilt{
+    color:var(--blue);
+    font-weight:900;
+  }
+  .hero-sub{
+    margin-top:28px; max-width:56ch; color:var(--paper-dim); font-size:1.05rem; font-weight:400;
+  }
+
+  .chart-wrap{
+    position:absolute; inset:0;
+    display:flex; align-items:flex-end; justify-content:center;
+    pointer-events:none;
+    opacity:0.9;
+  }
+  .chart-wrap svg{ width:100%; max-width:1400px; height:56%; }
+  #crashline{
+    stroke-dasharray:2000;
+    stroke-dashoffset:2000;
+    animation:draw 3.2s cubic-bezier(.4,0,.2,1) 0.4s forwards;
+  }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+
+  .scroll-cue{
+    position:absolute; bottom:44px; left:6vw;
+    display:flex; align-items:center; gap:12px;
+    font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--paper-dim);
+  }
+  .scroll-cue .dot{
+    width:6px; height:6px; border-radius:50%; background:var(--blue);
+    animation:bob 1.6s ease-in-out infinite;
+  }
+  @keyframes bob{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(6px);} }
+
+  /* ---------- SECTION SHARED ---------- */
+  section{ position:relative; padding:110px 6vw; }
+  .section-inner{ max-width:900px; margin:0 auto; }
+  .eyebrow-line{
+    font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.18em;
+    text-transform:uppercase; color:var(--blue); margin-bottom:20px;
+  }
+  h2{
+    font-size:clamp(1.6rem, 3.4vw, 2.6rem); font-weight:800; letter-spacing:-0.01em;
+    max-width:20ch; margin-bottom:34px;
+  }
+  .lede{ font-size:1.15rem; color:var(--paper); max-width:62ch; margin-bottom:18px; }
+  .dim{ color:var(--paper-dim); }
+  .fade-up{ opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease; }
+  .fade-up.in{ opacity:1; transform:translateY(0); }
+
+  .callout{
+    border-left:2px solid var(--blue);
+    padding:6px 0 6px 24px;
+    font-weight:600; font-size:1.2rem; letter-spacing:-0.01em;
+    max-width:52ch; margin:36px 0;
+  }
+
+  hr.rule{ border:none; border-top:1px solid var(--line); margin:0; }
+
+  /* ---------- HOST ---------- */
+  .host{
+    background:var(--charcoal-deep);
+  }
+  .host-grid{
+    display:grid; grid-template-columns:0.9fr 1.3fr; gap:64px; align-items:start;
+  }
+  .host-photo-wrap{ position:sticky; top:120px; }
+  .host-photo{
+    aspect-ratio:4/5; border-radius:2px; background:linear-gradient(160deg, #1f2126, #0c0d0f);
+    border:1px solid var(--line);
+    overflow:hidden;
+  }
+  .host-caption{
+    margin-top:16px; text-align:center;
+  }
+  .host-name{ font-size:1rem; font-weight:800; color:var(--paper); margin-top:14px; letter-spacing:0.02em; }
+
+  .timeline{ position:relative; padding-left:30px; }
+  .timeline::before{
+    content:''; position:absolute; left:0; top:6px; bottom:6px; width:2px;
+    background:linear-gradient(180deg, var(--red-loss), var(--blue) 65%, var(--blue));
+  }
+  .t-item{ position:relative; padding-bottom:44px; }
+  .t-item:last-child{ padding-bottom:0; }
+  .t-item::before{
+    content:''; position:absolute; left:-35px; top:4px; width:10px; height:10px; border-radius:50%;
+    background:var(--charcoal-deep); border:2px solid var(--blue);
+  }
+  .t-item.loss::before{ border-color:var(--red-loss); }
+  .t-year{
+    font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.1em;
+    color:var(--blue); text-transform:uppercase; margin-bottom:8px; display:block;
+  }
+  .t-item.loss .t-year{ color:var(--red-loss); }
+  .t-title{ font-weight:700; font-size:1.08rem; margin-bottom:8px; }
+  .t-body{ color:var(--paper-dim); font-size:0.98rem; max-width:56ch; }
+
+  .img-slot{
+    margin-top:16px; border:1px dashed var(--line); border-radius:2px; padding:18px;
+    font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--paper-dim);
+    letter-spacing:0.03em;
+  }
+
+  .wallet-grid{
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:10px;
+    margin-top:18px;
+  }
+  .wallet-grid img{
+    width:100%; aspect-ratio:9/16; object-fit:cover;
+    border-radius:2px; border:1px solid var(--line);
+    filter:grayscale(15%);
+  }
+  @media (max-width:640px){
+    .wallet-grid{ grid-template-columns:repeat(2, 1fr); }
+  }
+
+  /* ---------- STEPS ---------- */
+  .steps{ counter-reset:step; }
+  .step{
+    display:grid; grid-template-columns:70px 1fr; gap:24px;
+    padding:32px 0; border-top:1px solid var(--line);
+  }
+  .step:last-child{ border-bottom:1px solid var(--line); }
+  .step-num{
+    counter-increment:step;
+    font-family:'JetBrains Mono', monospace; font-weight:700; font-size:1.6rem; color:var(--blue);
+  }
+  .step-num::before{ content:counter(step, decimal-leading-zero); }
+  .step-title{ font-weight:700; font-size:1.15rem; margin-bottom:8px; }
+  .step-body{ color:var(--paper-dim); }
+  .step-body ul{ margin-top:10px; padding-left:18px; }
+  .step-body li{ margin-bottom:6px; }
+
+  /* ---------- CTA ---------- */
+  .cta-section{
+    background:var(--charcoal-deep);
+    text-align:center;
+  }
+  .price-tag{
+    display:inline-flex; align-items:baseline; gap:10px;
+    font-family:'JetBrains Mono', monospace;
+    color:var(--paper-dim); font-size:14px; letter-spacing:0.08em; text-transform:uppercase;
+    margin-bottom:26px;
+  }
+  .price-tag b{ color:var(--blue); font-size:20px; }
+  .cta-btn{
+    display:inline-flex; align-items:center; gap:14px;
+    background:var(--blue); color:#fff;
+    font-family:'JetBrains Mono', monospace; font-weight:700; font-size:16px; letter-spacing:0.04em;
+    padding:20px 40px; border-radius:2px; margin:0 auto;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .cta-btn:hover{ transform:translateY(-3px); box-shadow:0 14px 34px var(--blue-soft); }
+  .cta-note{ margin-top:22px; color:var(--paper-dim); font-size:0.95rem; max-width:46ch; margin-left:auto; margin-right:auto; }
+
+  .filter-copy{ max-width:62ch; margin:56px auto 0; text-align:left; }
+  .filter-copy p{ margin-bottom:20px; color:var(--paper-dim); }
+  .filter-copy strong{ color:var(--paper); font-weight:700; }
+
+  .cta-repeat{ margin-top:60px; }
+
+  footer{
+    padding:50px 6vw; text-align:center;
+    font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--paper-dim);
+    letter-spacing:0.05em; border-top:1px solid var(--line);
+  }
+
+  @media (max-width:820px){
+    .host-grid{ grid-template-columns:1fr; }
+    .host-photo-wrap{ position:static; }
+    .host-photo{ aspect-ratio:16/10; }
+    section{ padding:80px 6vw; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+    #crashline{ stroke-dashoffset:0; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-logo">ZERO TO <span>MILLION</span></div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="chart-wrap" aria-hidden="true">
+    <svg viewBox="0 0 1400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path id="crashline" d="M0,180 C120,150 200,120 280,140 C360,160 400,260 460,320 C520,380 560,460 620,470 C680,480 700,440 740,400 C800,340 820,300 880,260 C960,210 1020,190 1100,150 C1180,110 1260,80 1400,40"
+        stroke="#0058fd" stroke-width="3" stroke-linecap="round"/>
+      <path d="M0,180 C120,150 200,120 280,140 C360,160 400,260 460,320 C520,380 560,460 620,470"
+        stroke="#ff4d4d" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+    </svg>
+  </div>
+
+  <div class="hero-eyebrow mono">The Rebuild Session · ₦1,000 live masterclass</div>
+  <h1>I lost thousands of dollars chasing <em>"free money"</em> in crypto. Then I <span class="rebuilt">rebuilt into six figures a month.</span></h1>
+  <p class="hero-sub">No hype. No trading signals. Just the system that took someone from zero back to consistent monthly income — broken down so you can run it yourself.</p>
+
+  <div class="scroll-cue"><span class="dot"></span> Keep scrolling</div>
+</header>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="section-inner fade-up">
+    <div class="eyebrow-line">The pattern</div>
+    <h2>You've chased the "next big thing" before.</h2>
+    <p class="lede">Maybe it was a course. Maybe it was crypto, an investment platform, a new business. Something promised big rewards for very little — and for a while, it looked like it was working.</p>
+    <p class="lede dim">Then it didn't work.</p>
+    <p class="lede dim">The money didn't show up, or it showed up and then disappeared. And it's not really about the money anymore — it's the quiet feeling that you're behind, that maybe you're just not built for making more money.</p>
+
+    <div class="callout">Here's the thing: that's not a "you" problem.</div>
+
+    <p class="lede dim">Everyone trying to build their income gets sold the same lie — that success is in finding the right opportunity, not in building a real system. That belief is what keeps people broke and starting over.</p>
+    <p class="lede">You deserve a rebuild that isn't another gamble.</p>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- HOST -->
+<section class="host">
+  <div class="section-inner fade-up">
+    <div class="eyebrow-line">Meet the host</div>
+    <h2>I'm Abraham. I lost thousands of dollars chasing "easy money" in crypto.</h2>
+
+    <div class="host-grid">
+      <div class="host-photo-wrap">
+        <div class="host-photo">
+          <img src="images/host-photo.png" alt="Abraham, host of Zero To Million" style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <div class="host-caption">
+          <div class="host-name">Abraham</div>
+          <div class="dim" style="margin-top:4px; font-size:0.92rem;">Host, Zero To Million</div>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <div class="t-item loss">
+          <span class="t-year mono">2023 – 2024</span>
+          <div class="t-title">Chasing "easy money" in crypto</div>
+          <div class="t-body">I invested heavily in early-stage crypto projects. For a while, everything looked promising — until the 2024 crash wiped out almost everything. In a matter of weeks, I went from having thousands of dollars to starting over with zero.</div>
+          <div class="wallet-grid">
+            <img src="images/wallet-1.jpeg" alt="Crypto trading desk setup">
+            <img src="images/wallet-2.png" alt="Bonkbot wallet holdings">
+            <img src="images/wallet-3.png" alt="MetaMask swap screen">
+            <img src="images/wallet-4.png" alt="Islamic Coin wallet balance">
+          </div>
+        </div>
+
+        <div class="t-item loss">
+          <span class="t-year mono">2024</span>
+          <div class="t-title">The mobile barbing business</div>
+          <div class="t-body">Instead of giving up, I used that setback as a fresh start and explored different ways to earn, beginning with a mobile barbing business. It failed — I had no systems, no strategy, no clear vision.</div>
+          <div class="wallet-grid">
+            <img src="images/barbing-1.jpg" alt="Barbing business client fade">
+            <img src="images/barbing-2.jpg" alt="Barbing business client fade">
+            <img src="images/barbing-3.jpg" alt="Barbing business client fade">
+            <img src="images/barbing-4.jpg" alt="Barbing business client fade">
+          </div>
+        </div>
+
+        <div class="t-item">
+          <span class="t-year mono">2025</span>
+          <div class="t-title">₦5,000 design jobs → real skills</div>
+          <div class="t-body">I then tried graphic design, taking ₦5,000 jobs, but quickly realized I needed higher-value skills. So I invested in learning sales, marketing, content creation, video editing, motion graphics, and web design.</div>
+        </div>
+
+        <div class="t-item">
+          <span class="t-year mono">2026</span>
+          <div class="t-title">Systems, not gambles</div>
+          <div class="t-body">That decision changed everything. I went from taking ₦5,000 jobs to building systems and hiring designers. By 2026, those systems were consistently generating six figures every month.</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="lede" style="margin-top:56px; max-width:60ch;">I'm not here to sell you hype or teach you trading. I'm here to show you the rebuild — because I've done it, and I'll show you the receipts.</p>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- WHAT HAPPENS NEXT -->
+<section class="next">
+  <div class="section-inner fade-up">
+    <div class="eyebrow-line">The process</div>
+    <h2>Here's exactly what happens next.</h2>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num mono"></div>
+        <div>
+          <div class="step-title">Register for the Private Masterclass</div>
+          <div class="step-body">Lock your seat. Spots are limited and registration closes before the live date.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num mono"></div>
+        <div>
+          <div class="step-title">Show up and get the rebuild framework</div>
+          <div class="step-body">
+            <ul>
+              <li>Live, in plain language: the exact system used to go from zero to consistent six-figure months.</li>
+              <li>How to spot income in the skills you already have — and how one skill scales into six figures a month.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num mono"></div>
+        <div>
+          <div class="step-title">Get first access to what's next</div>
+          <div class="step-body">Early entry into the community I'm building for business owners who want to grow, learn, and earn.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="register">
+  <div class="section-inner fade-up">
+    <h2 style="margin:0 auto 22px; text-align:center;">Register Now</h2>
+    <a class="cta-btn" href="#">Register Now — ₦1,000 →</a>
+    <p class="cta-note">Live access to the full breakdown + the rebuild framework, step by step + live Q&A at the end.</p>
+
+    <div class="filter-copy">
+      <p>₦1,000 isn't about the money. It's a filter between people who are just curious and people who are actually ready to act. If you're serious, it's nothing. If you talk yourself out of ₦1,000, that's worth noticing too.</p>
+      <p>Without a real system, the pattern repeats: another "opportunity" comes along, you put time or money into it, and you're back at ground zero — except a year older.</p>
+      <p><strong>Picture this instead:</strong> income that shows up every month because it's built on a system, not a bet. No more guesswork. Just a repeatable process you control — the same one that took someone from losing it all to six figures a month, broken down so you can run it yourself.</p>
+      <p>You already know what chasing hype cost you. This is the rebuild framework — the one I wish someone had handed me before I lost it all. ₦1,000 gets you the whole thing, live.</p>
+    </div>
+
+    <div class="cta-repeat">
+      <a class="cta-btn" href="#">Register — ₦1,000 →</a>
+      <p class="cta-note">Seats are limited. Registration closes before the live date.</p>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 · Zero To Six Figures — The Rebuild Session</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); }
+    });
+  }, { threshold:0.15 });
+  document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+</script>
+
+</body>
+</html>
