@@ -711,6 +711,15 @@
       </li>
     </ul>
 
+    <div class="total-value reveal">Total value: <span class="price-strike">₦150,000</span> &nbsp; Launch price: <span>₦50,000</span></div>
+
+    <div class="launch-special reveal">
+      <div class="kicker">Launch Special</div>
+      <p class="lead">But because this is the official launch of Brand with AB, I'm doing something I won't repeat.</p>
+      <p>I'm opening this up basically for free for the first 50 people, just a registration fee of <strong>₦2,000</strong>. After this online event, this course launches at <span class="price-strike">₦50,000</span>.</p>
+      <p><strong>You need to ask yourself:</strong> Can this registration fee buy you a decent meal or even data for a week, then make your decision.</p>
+    </div>
+
     <div class="bonus-heading reveal">Launch Bonuses</div>
     <ul class="get-list">
       <li class="reveal">
@@ -718,7 +727,6 @@
         <div>
           <div class="get-title">Private Mentorship</div>
           <p class="get-desc">Direct access to me for a private session.</p>
-          <span class="get-value">Free</span>
         </div>
       </li>
       <li class="reveal">
@@ -726,7 +734,6 @@
         <div>
           <div class="get-title">Personalized Sales Copy</div>
           <p class="get-desc">I'll help shape your sales message using your story, so you walk away with copy that's actually yours, not a template.</p>
-          <span class="get-value">Free</span>
         </div>
       </li>
       <li class="reveal">
@@ -734,20 +741,9 @@
         <div>
           <div class="get-title">Discount on Upcoming Private Classes</div>
           <p class="get-desc">Locked-in reduced pricing on future private classes I run.</p>
-          <span class="get-value">Free</span>
         </div>
       </li>
     </ul>
-
-    <div class="total-value reveal">Total value: <span>₦150,000</span></div>
-
-    <div class="launch-special reveal">
-      <div class="kicker">Launch Special</div>
-      <p class="lead">Because this is the official launch of Brand with AB, I'm doing something I won't repeat.</p>
-      <p>I'm opening this up basically for free — just a registration fee of <strong>₦2,000</strong>. After this online event, this course launches at <span class="price-strike">₦50,000</span>.</p>
-      <p><strong>Kindly note:</strong> this is a private class, so the offer is only for 50 people.</p>
-      <p>You need to ask yourself if this registration fee can buy you a decent meal or even data for a week, then make your decision.</p>
-    </div>
   </div>
 </section>
 
@@ -759,7 +755,7 @@
       <p class="cta-note">Live access to the full breakdown + the rebuild framework, step by step + live Q&amp;A at the end.</p>
       <div class="countdown" data-countdown>
         <div class="countdown-item"><span class="countdown-num cd-days">03</span><span class="countdown-label">Days</span></div>
-        <div class="countdown-item"><span class="countdown-num cd-hours">00</span><span class="countdown-label">Hours</span></div>
+        <div class="countdown-item"><span class="countdown-num cd-hours">01</span><span class="countdown-label">Hours</span></div>
         <div class="countdown-item"><span class="countdown-num cd-mins">00</span><span class="countdown-label">Mins</span></div>
         <div class="countdown-item"><span class="countdown-num cd-secs">00</span><span class="countdown-label">Secs</span></div>
       </div>
@@ -787,7 +783,7 @@
       <p class="cta-note">Seats are limited. Registration closes before the live date.</p>
       <div class="countdown" data-countdown>
         <div class="countdown-item"><span class="countdown-num cd-days">03</span><span class="countdown-label">Days</span></div>
-        <div class="countdown-item"><span class="countdown-num cd-hours">00</span><span class="countdown-label">Hours</span></div>
+        <div class="countdown-item"><span class="countdown-num cd-hours">01</span><span class="countdown-label">Hours</span></div>
         <div class="countdown-item"><span class="countdown-num cd-mins">00</span><span class="countdown-label">Mins</span></div>
         <div class="countdown-item"><span class="countdown-num cd-secs">00</span><span class="countdown-label">Secs</span></div>
       </div>
@@ -815,14 +811,14 @@
 <script>
   // ---------- 3-day rolling countdown (auto-resets when it hits zero) ----------
   (function(){
-    const STORAGE_KEY = 'z2m_countdown_end';
-    const THREE_DAYS_MS = 3 * 24 * 60 * 60 * 1000;
+    const STORAGE_KEY = 'z2m_countdown_end_v2';
+    const COUNTDOWN_MS = (3 * 24 + 1) * 60 * 60 * 1000; // 3 days, 1 hour
 
     function getEndTime(){
       const now = Date.now();
       let end = parseInt(localStorage.getItem(STORAGE_KEY), 10);
       if(!end || isNaN(end) || end <= now){
-        end = now + THREE_DAYS_MS;
+        end = now + COUNTDOWN_MS;
         localStorage.setItem(STORAGE_KEY, String(end));
       }
       return end;
