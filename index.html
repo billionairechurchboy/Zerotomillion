@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zero To Million — The Rebuild Session</title>
+<title>Zero To Million — The Private Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -433,6 +433,113 @@
     background:var(--blue);
     margin-top:8px;
   }
+  .get-list .emoji{
+    flex-shrink:0;
+    font-size:20px;
+    line-height:1;
+    margin-top:2px;
+  }
+  .get-title{
+    font-size:17px;
+    font-weight:700;
+    color:#fff;
+    margin-bottom:6px;
+  }
+  .get-desc{
+    font-size:15px;
+    font-weight:400;
+    color:rgba(255,255,255,0.68);
+    margin-bottom:10px;
+    max-width:560px;
+  }
+  .get-value{
+    display:inline-block;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:0.04em;
+    color:var(--blue);
+    background:rgba(0,88,253,0.12);
+    padding:5px 12px;
+    border-radius:20px;
+  }
+  .bonus-heading{
+    margin-top:48px;
+    font-size:13px;
+    font-weight:800;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .bonus-heading::before{
+    content:"";
+    width:26px;height:1px;
+    background:var(--blue);
+    display:inline-block;
+  }
+  .total-value{
+    margin-top:40px;
+    padding:24px 28px;
+    border:1px solid var(--line-on-dark);
+    border-radius:10px;
+    font-size:20px;
+    font-weight:800;
+    color:#fff;
+    max-width:600px;
+  }
+  .total-value span{color:var(--blue);}
+  .launch-special{
+    margin-top:56px;
+    padding-top:48px;
+    border-top:1px solid var(--line-on-dark);
+  }
+  .launch-special .kicker{margin-bottom:18px;}
+  .launch-special p strong{color:#fff;}
+  .price-strike{
+    text-decoration:line-through;
+    color:rgba(255,255,255,0.45);
+    font-weight:500;
+  }
+
+  /* ---------- countdown timer ---------- */
+  .countdown{
+    display:flex;
+    gap:14px;
+    margin-top:22px;
+  }
+  .countdown-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    background:rgba(255,255,255,0.06);
+    border:1px solid var(--line-on-dark);
+    border-radius:8px;
+    padding:12px 16px;
+    min-width:58px;
+  }
+  .countdown-num{
+    font-size:22px;
+    font-weight:800;
+    color:#fff;
+    font-variant-numeric:tabular-nums;
+  }
+  .countdown-label{
+    font-size:10px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:rgba(255,255,255,0.5);
+    margin-top:4px;
+    font-weight:600;
+  }
+  .countdown-caption{
+    margin-top:14px;
+    font-size:12px;
+    color:rgba(255,255,255,0.5);
+    max-width:360px;
+  }
 
   /* ---------- closing ---------- */
   .closing-split{
@@ -477,8 +584,8 @@
 <!-- HERO -->
 <section class="hero">
   <div class="wrap hero-inner">
-    <div class="hero-eyebrow reveal">Zero To Million — Private Prelaunch Event</div>
-    <h1 class="reveal">I lost thousands of dollars chasing <span class="fade">"free money"</span> in crypto. <span class="strong">then I rebuilt into six figures a month.</span></h1>
+    <div class="hero-eyebrow reveal">Zero To Million — The Private Masterclass</div>
+    <h1 class="reveal">I lost thousands of dollars chasing <span class="fade">"free money"</span> in crypto. <span class="strong">Then I rebuilt into six figures a month.</span></h1>
     <div class="scroll-cue reveal">
       <span class="chev">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -496,9 +603,9 @@
     <p class="reveal">Maybe it was a course. Maybe it was crypto, an investment platform, a new business.</p>
     <p class="reveal">Something promised big rewards for very little. And for a while, it looked like it was working.</p>
     <p class="reveal"><strong>Then it didn't work.</strong></p>
-    <p class="reveal">The money didn't show up, or it showed up and then disappeared. And it's not really about the money anymore — it's the quiet feeling that you're behind, that maybe you're just not built for making more money.</p>
+    <p class="reveal">The money didn't show up, or it showed up and then disappeared. And it's not really about the money anymore it's the quiet feeling that you're behind, that maybe you're just not built for making more money.</p>
     <div class="callout reveal">Here's the thing: that's not a "you" problem.</div>
-    <p class="reveal">Everyone trying to build their income gets sold the same lie — that success is in finding the right opportunity, not in building a real system. That belief is what keeps people broke and starting over.</p>
+    <p class="reveal">Everyone trying to build their income gets sold the same lie that success is in finding the right opportunity, not in building a real system. That belief is what keeps people broke and starting over.</p>
     <p class="lead reveal">You deserve a rebuild that isn't another gamble.</p>
   </div>
 </section>
@@ -520,7 +627,7 @@
       <div class="tl-item reveal">
         <div class="tl-year">2023 – 2024</div>
         <div class="tl-title">The crypto crash</div>
-        <p>I invested heavily in early-stage crypto projects. For a while, everything looked promising — until the 2024 crash wiped out almost everything. In a matter of weeks, I went from having thousands of dollars to starting over with zero.</p>
+        <p>I invested heavily in early stage crypto projects. For a while, everything looked promising until the 2024 crash wiped out almost everything. In a matter of weeks, I went from having thousands of dollars to starting over with zero.</p>
         <div class="img-grid">
           <div class="img-slot"><img src="images/wallet-1.jpg" alt="Crypto wallet screenshot 1"></div>
           <div class="img-slot"><img src="images/wallet-2.png" alt="Crypto wallet screenshot 2"></div>
@@ -532,7 +639,7 @@
       <div class="tl-item reveal">
         <div class="tl-year">2025</div>
         <div class="tl-title">The barbing business</div>
-        <p>Instead of giving up, I used that setback as a fresh start. I explored different ways to earn, beginning with a mobile barbing business. It failed — because I had no systems, strategy, or clear vision.</p>
+        <p>Instead of giving up, I used that setback as a fresh start. I explored different ways to earn, beginning with a mobile barbing business. It failed because I had no systems, strategy, or clear vision.</p>
         <div class="img-grid">
           <div class="img-slot"><img src="images/barbing-1.jpg" alt="Barbing business photo 1"></div>
           <div class="img-slot"><img src="images/barbing-2.jpg" alt="Barbing business photo 2"></div>
@@ -544,7 +651,7 @@
       <div class="tl-item reveal">
         <div class="tl-year">2025</div>
         <div class="tl-title">₦5,000 graphic design jobs</div>
-        <p>I then tried graphic design, taking ₦5,000 jobs, but quickly realized I needed higher-value skills. So I invested in learning sales, marketing, content creation, video editing, motion graphics, and web design.</p>
+        <p>I then tried graphic design, taking ₦5,000 jobs, but quickly realized I needed higher value skills. So I invested in learning sales, marketing, content creation, video editing, motion graphics, and web design.</p>
       </div>
 
       <div class="tl-item reveal">
@@ -555,15 +662,9 @@
     </div>
 
     <div class="result-line reveal">
-      <div class="cap">Before i launch my Agency, i will be giving a few set of people access to this, basically for free and this offer will be closed in few days.</div>
+      <div class="num">6-figures</div>
+      <div class="cap">consistently generated every month, by 2026 built on systems, not another bet.</div>
     </div>
-
-    <div class="cta-wrap reveal">
-      <a href="#register" class="cta-btn">Register Now ₦1,000 <span class="arrow">→</span></a>
-      <p class="cta-note">Live access to the full breakdown + the rebuild framework, step by step + live Q&amp;A at the end.</p>
-    </div>
-
-    <p class="filter-note reveal" style="color:rgba(255,255,255,0.65);border-top-color:var(--line-on-dark);">₦1,000 isn't about the money. It's a filter between people who are just curious and people who are actually ready to act. If you're serious, it's nothing. If you talk yourself out of ₦1,000, that's worth noticing too.</p>
   </div>
 </section>
 
@@ -571,16 +672,107 @@
 <section class="section-charcoal">
   <div class="wrap">
     <div class="kicker reveal">What you get</div>
-    <h2 class="reveal">Everything you need for the rebuild.</h2>
+    <h2 class="reveal">Everything you need to scale up to 6 figures monthly.</h2>
+
     <ul class="get-list">
-      <li class="reveal"><span class="bullet"></span>How to start or structure your already existing business for high ticket sales</li>
-      <li class="reveal"><span class="bullet"></span>The rebuild framework, step by step</li>
-      <li class="reveal"><span class="bullet"></span>How to turn what you already know into income</li>
-      <li class="reveal"><span class="bullet"></span>Live Q&amp;A</li>
-      <li class="reveal"><span class="bullet"></span>Early access to Community</li>
+      <li class="reveal">
+        <span class="emoji">🔵</span>
+        <div>
+          <div class="get-title">The Rebuild Framework</div>
+          <p class="get-desc">My exact step-by-step system for going from crypto losses to six figures, broken down so you can apply it starting this week.</p>
+          <span class="get-value">Value: ₦50,000</span>
+        </div>
+      </li>
+      <li class="reveal">
+        <span class="emoji">🔵</span>
+        <div>
+          <div class="get-title">High-Ticket Structuring</div>
+          <p class="get-desc">How to take the business you already have (or the skill you already own) and package it to sell at a premium, even if you've never charged high-ticket before.</p>
+          <span class="get-value">Value: ₦40,000</span>
+        </div>
+      </li>
+      <li class="reveal">
+        <span class="emoji">🔵</span>
+        <div>
+          <div class="get-title">Turn Knowledge Into Income</div>
+          <p class="get-desc">The exact method to convert what's already in your head into a sellable offer, without building anything from scratch.</p>
+          <span class="get-value">Value: ₦35,000</span>
+        </div>
+      </li>
+      <li class="reveal">
+        <span class="emoji">🔵</span>
+        <div>
+          <div class="get-title">Live Q&amp;A</div>
+          <p class="get-desc">Bring your real business, get a real answer. No generic advice.</p>
+          <span class="get-value">Value: ₦20,000</span>
+        </div>
+      </li>
+      <li class="reveal">
+        <span class="emoji">🔵</span>
+        <div>
+          <div class="get-title">Early Community Access</div>
+          <p class="get-desc">Get in before the doors open to everyone else, and start building alongside people doing the same rebuild.</p>
+          <span class="get-value">Value: ₦15,000</span>
+        </div>
+      </li>
     </ul>
+
+    <div class="bonus-heading reveal">Launch Bonuses</div>
+    <ul class="get-list">
+      <li class="reveal">
+        <span class="emoji">🎁</span>
+        <div>
+          <div class="get-title">Private 1-on-1 Mentorship</div>
+          <p class="get-desc">Direct access to me for a private session.</p>
+          <span class="get-value">Value: ₦100,000</span>
+        </div>
+      </li>
+      <li class="reveal">
+        <span class="emoji">🎁</span>
+        <div>
+          <div class="get-title">Personalized Sales Copy</div>
+          <p class="get-desc">I'll help shape your sales message using your story, so you walk away with copy that's actually yours, not a template.</p>
+          <span class="get-value">Value: ₦30,000</span>
+        </div>
+      </li>
+      <li class="reveal">
+        <span class="emoji">🎁</span>
+        <div>
+          <div class="get-title">Discount on Upcoming Private Classes</div>
+          <p class="get-desc">Locked-in reduced pricing on future private classes I run.</p>
+          <span class="get-value">Value: ₦25,000</span>
+        </div>
+      </li>
+    </ul>
+
+    <div class="total-value reveal">Total value: <span>₦315,000</span></div>
+
+    <div class="launch-special reveal">
+      <div class="kicker">🚀 Launch Special</div>
+      <p class="lead">Because this is the official launch of Brand with AB, I'm doing something I won't repeat.</p>
+      <p>I'm opening this up basically for free — just a registration fee of <strong>₦2,000</strong>. After this online event, this course launches at <span class="price-strike">₦50,000</span>.</p>
+      <p><strong>Kindly note:</strong> this is a private class, so the offer is only for 50 people.</p>
+      <p>You need to ask yourself if this registration fee can buy you a decent meal or even data for a week, then make your decision.</p>
+    </div>
   </div>
 </section>
+
+<!-- SECURE YOUR SPOT -->
+<section class="section-deep">
+  <div class="wrap">
+    <div class="cta-wrap reveal">
+      <a href="#register" class="cta-btn">Secure Your Spot — ₦2,000 <span class="arrow">→</span></a>
+      <p class="cta-note">Live access to the full breakdown + the rebuild framework, step by step + live Q&amp;A at the end.</p>
+      <div class="countdown" data-countdown>
+        <div class="countdown-item"><span class="countdown-num cd-days">03</span><span class="countdown-label">Days</span></div>
+        <div class="countdown-item"><span class="countdown-num cd-hours">00</span><span class="countdown-label">Hours</span></div>
+        <div class="countdown-item"><span class="countdown-num cd-mins">00</span><span class="countdown-label">Mins</span></div>
+        <div class="countdown-item"><span class="countdown-num cd-secs">00</span><span class="countdown-label">Secs</span></div>
+      </div>
+    </div>
+
+    
+
 
 <!-- CLOSING -->
 <section id="register">
@@ -588,23 +780,29 @@
     <div class="closing-split">
       <div class="reveal">
         <div class="panel-label">Without a system</div>
-        <p>Without a real system, the pattern repeats: another "opportunity" comes along, you put time or money into it, and you're back at ground zero — except a year older.</p>
+        <p>Without a real system, the pattern repeats: another "opportunity" comes along, you put time or money into it, and you're back at ground zero except a year older.</p>
       </div>
       <div class="reveal">
         <div class="panel-label">With a system</div>
-        <p>Picture this instead: income that shows up every month because it's built on a system, not a bet. No more guesswork. Just a repeatable process you control — the same one that took someone from losing it all to six figures a month, broken down so you can run it yourself.</p>
+        <p>You grow your income into 6 figures monthly because, it's built on a system, not a bet. No more guesswork. Just a repeatable process you control — the same one that took someone from losing it all to six figures a month, broken down so you can run it yourself.</p>
       </div>
     </div>
 
     <div class="cta-wrap reveal">
-      <a href="#register" class="cta-btn">Register — ₦1,000 <span class="arrow">→</span></a>
+      <a href="#register" class="cta-btn">Secure Your Spot — ₦2,000 <span class="arrow">→</span></a>
       <p class="cta-note">Seats are limited. Registration closes before the live date.</p>
+      <div class="countdown" data-countdown>
+        <div class="countdown-item"><span class="countdown-num cd-days">03</span><span class="countdown-label">Days</span></div>
+        <div class="countdown-item"><span class="countdown-num cd-hours">00</span><span class="countdown-label">Hours</span></div>
+        <div class="countdown-item"><span class="countdown-num cd-mins">00</span><span class="countdown-label">Mins</span></div>
+        <div class="countdown-item"><span class="countdown-num cd-secs">00</span><span class="countdown-label">Secs</span></div>
+      </div>
     </div>
   </div>
 </section>
 
 <footer>
-  © 2026 · Zero To Six Figures — The Rebuild Session
+  © 2026 · Zero To Six Figures — The Private Masterclass
 </footer>
 
 <script>
@@ -618,6 +816,49 @@
     });
   },{threshold:0.15, rootMargin:'0px 0px -40px 0px'});
   revealEls.forEach(el=>io.observe(el));
+</script>
+
+<script>
+  // ---------- 3-day rolling countdown (auto-resets when it hits zero) ----------
+  (function(){
+    const STORAGE_KEY = 'z2m_countdown_end';
+    const THREE_DAYS_MS = 3 * 24 * 60 * 60 * 1000;
+
+    function getEndTime(){
+      const now = Date.now();
+      let end = parseInt(localStorage.getItem(STORAGE_KEY), 10);
+      if(!end || isNaN(end) || end <= now){
+        end = now + THREE_DAYS_MS;
+        localStorage.setItem(STORAGE_KEY, String(end));
+      }
+      return end;
+    }
+
+    function pad(n){
+      return String(n).padStart(2, '0');
+    }
+
+    function tick(){
+      let end = getEndTime();
+      let diff = end - Date.now();
+      if(diff <= 0){
+        end = getEndTime(); // forces a fresh 3-day window
+        diff = end - Date.now();
+      }
+      const days = Math.floor(diff / (24 * 60 * 60 * 1000));
+      const hours = Math.floor((diff % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
+      const mins = Math.floor((diff % (60 * 60 * 1000)) / (60 * 1000));
+      const secs = Math.floor((diff % (60 * 1000)) / 1000);
+
+      document.querySelectorAll('.cd-days').forEach(el => el.textContent = pad(days));
+      document.querySelectorAll('.cd-hours').forEach(el => el.textContent = pad(hours));
+      document.querySelectorAll('.cd-mins').forEach(el => el.textContent = pad(mins));
+      document.querySelectorAll('.cd-secs').forEach(el => el.textContent = pad(secs));
+    }
+
+    tick();
+    setInterval(tick, 1000);
+  })();
 </script>
 
 </body>
