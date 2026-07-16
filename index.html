@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- TikTok Pixel Code Start -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+  ttq.load('D9BVOCRC77U79CKF1R9G');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+<!-- TikTok Pixel Code End -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Zero To Million — The Private Masterclass</title>
@@ -497,6 +508,101 @@
   }
   .launch-special .kicker{margin-bottom:18px;}
   .launch-special p strong{color:#fff;}
+
+  .reg-form{
+    max-width:560px;
+    margin-top:40px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    text-align:left;
+  }
+  .reg-field label{
+    display:block;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--blue);
+    margin-bottom:8px;
+  }
+  .reg-field input,
+  .reg-field textarea{
+    width:100%;
+    background:var(--charcoal-soft);
+    border:1px solid var(--line-on-dark);
+    border-radius:8px;
+    padding:14px 16px;
+    color:#fff;
+    font-family:inherit;
+    font-size:15px;
+    transition:border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .reg-field textarea{
+    min-height:100px;
+    resize:vertical;
+  }
+  .reg-field input:focus,
+  .reg-field textarea:focus{
+    outline:none;
+    border-color:var(--blue);
+    box-shadow:0 0 0 3px rgba(0,88,253,0.25);
+  }
+  .reg-field input::placeholder,
+  .reg-field textarea::placeholder{
+    color:#8a8d94;
+  }
+  .reg-error{
+    color:#ff5c5c;
+    font-size:13px;
+    margin-top:6px;
+    display:none;
+  }
+  .reg-submit{
+    border:none;
+    cursor:pointer;
+    font-family:inherit;
+  }
+  .reg-status{
+    margin-top:16px;
+    font-size:14px;
+    color:#8a8d94;
+    display:none;
+  }
+  .reg-success{
+    max-width:560px;
+    margin-top:40px;
+    padding:32px 28px;
+    border:1px solid var(--line-on-dark);
+    border-radius:10px;
+    background:var(--charcoal-soft);
+    text-align:left;
+    display:none;
+  }
+  .reg-success h3{
+    color:#fff;
+    font-size:22px;
+    margin-bottom:12px;
+  }
+  .reg-success p{
+    color:#c7c9ce;
+    margin-bottom:20px;
+  }
+  .reg-whatsapp-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:#25D366;
+    color:#0d0e10;
+    font-weight:800;
+    padding:14px 28px;
+    border-radius:8px;
+    text-decoration:none;
+    transition:transform 0.2s ease;
+  }
+  .reg-whatsapp-btn:hover{
+    transform:translateY(-2px);
+  }
   .price-strike{
     text-decoration:line-through;
     color:rgba(255,255,255,0.45);
@@ -751,7 +857,7 @@
 <section class="section-deep">
   <div class="wrap">
     <div class="cta-wrap reveal">
-      <a href="#register" class="cta-btn">Secure Your Spot — ₦2,000 <span class="arrow">→</span></a>
+      <a href="#regForm" class="cta-btn">Secure Your Spot <span class="arrow">→</span></a>
       <p class="cta-note">Live access to the full breakdown + the rebuild framework, step by step + live Q&amp;A at the end.</p>
       <div class="countdown" data-countdown>
         <div class="countdown-item"><span class="countdown-num cd-days">03</span><span class="countdown-label">Days</span></div>
@@ -779,7 +885,6 @@
     </div>
 
     <div class="cta-wrap reveal">
-      <a href="#register" class="cta-btn">Secure Your Spot — ₦2,000 <span class="arrow">→</span></a>
       <p class="cta-note">Seats are limited. Registration closes before the live date.</p>
       <div class="countdown" data-countdown>
         <div class="countdown-item"><span class="countdown-num cd-days">03</span><span class="countdown-label">Days</span></div>
@@ -787,6 +892,38 @@
         <div class="countdown-item"><span class="countdown-num cd-mins">00</span><span class="countdown-label">Mins</span></div>
         <div class="countdown-item"><span class="countdown-num cd-secs">00</span><span class="countdown-label">Secs</span></div>
       </div>
+    </div>
+
+    <form class="reg-form reveal" id="regForm" novalidate>
+      <div class="reg-field">
+        <label for="regName">Full Name</label>
+        <input type="text" id="regName" name="name" placeholder="Your full name" required>
+      </div>
+      <div class="reg-field">
+        <label for="regEmail">Email Address</label>
+        <input type="email" id="regEmail" name="email" placeholder="you@email.com" required>
+      </div>
+      <div class="reg-field">
+        <label for="regPhone">Phone Number</label>
+        <input type="tel" id="regPhone" name="phone" placeholder="e.g. 08012345678" required>
+      </div>
+      <div class="reg-field">
+        <label for="regWhatsapp">WhatsApp Number</label>
+        <input type="tel" id="regWhatsapp" name="whatsapp" placeholder="e.g. 08012345678" required>
+      </div>
+      <div class="reg-field">
+        <label for="regReason">Why should you be selected?</label>
+        <textarea id="regReason" name="reason" placeholder="Tell us a bit about where you're at and what you're looking to build..." required></textarea>
+      </div>
+      <div class="reg-error" id="regError">Please fill in every field before submitting.</div>
+      <button type="submit" class="cta-btn reg-submit" id="regSubmit">Secure Your Spot <span class="arrow">→</span></button>
+      <div class="reg-status" id="regStatus">Submitting...</div>
+    </form>
+
+    <div class="reg-success" id="regSuccess">
+      <h3>You're in! 🎉</h3>
+      <p>Tap below to join the private WhatsApp group — that's where all class details and updates will be shared.</p>
+      <a href="WHATSAPP_GROUP_LINK_HERE" class="reg-whatsapp-btn" id="regWhatsappLink" target="_blank" rel="noopener">Join the WhatsApp Group →</a>
     </div>
   </div>
 </section>
@@ -806,6 +943,75 @@
     });
   },{threshold:0.15, rootMargin:'0px 0px -40px 0px'});
   revealEls.forEach(el=>io.observe(el));
+</script>
+
+<script>
+  // ---------- Registration form: save to Google Sheet + fire pixel + reveal WhatsApp ----------
+  (function(){
+    const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbxmT_TMHxob4CDOedwSJ3hMDnP7Fn8i3ntiYxmyinVdw9iYnIABtWveIzJGoBvfDwi9/exec";
+
+    const form = document.getElementById('regForm');
+    const errorEl = document.getElementById('regError');
+    const statusEl = document.getElementById('regStatus');
+    const submitBtn = document.getElementById('regSubmit');
+    const successEl = document.getElementById('regSuccess');
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+
+      const name = document.getElementById('regName').value.trim();
+      const email = document.getElementById('regEmail').value.trim();
+      const phone = document.getElementById('regPhone').value.trim();
+      const whatsapp = document.getElementById('regWhatsapp').value.trim();
+      const reason = document.getElementById('regReason').value.trim();
+
+      if(!name || !email || !phone || !whatsapp || !reason){
+        errorEl.style.display = 'block';
+        return;
+      }
+      errorEl.style.display = 'none';
+
+      submitBtn.disabled = true;
+      statusEl.style.display = 'block';
+
+      const payload = {
+        name: name,
+        email: email,
+        phone: phone,
+        whatsapp: whatsapp,
+        reason: reason,
+        amount: 2000,
+        status: 'registered'
+      };
+
+      // Save to Google Sheet (fire-and-forget; Apps Script doesn't return readable CORS response)
+      fetch(GOOGLE_SHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).catch(function(err){
+        console.error('Sheet save failed:', err);
+      });
+
+      // Fire TikTok pixel event — CompleteRegistration since no payment is collected on-site yet
+      if(window.ttq){
+        ttq.track('CompleteRegistration', {
+          contents: [{
+            content_id: 'zero-to-million-masterclass',
+            content_type: 'product',
+            content_name: 'Zero To Million Masterclass'
+          }],
+          value: 2000,
+          currency: 'NGN'
+        });
+      }
+
+      form.style.display = 'none';
+      successEl.style.display = 'block';
+      successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  })();
 </script>
 
 <script>
